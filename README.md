@@ -1,0 +1,12 @@
+The standard distribution of Sphider, a search engine in PHP, requires MySQL. This version is ported to use PHP Data Objects (PDO), so that it can be used with many database back-ends, including SQLite.
+
+For documentation on Sphider, please see the [original Sphider site](http://www.sphider.eu/). Documentation specific to this port is in the Wiki of this project. Brief [installation instructions](https://github.com/ameer1234567890/sphider-pdo/wiki/Installation) are found here.
+
+In general, Sphider-PDO is just a basic port of Sphider version 1.3.5 to use the [PDO interface](https://github.com/ameer1234567890/sphider-pdo/wiki/DatabaseSetup) to talk to databases. A few notes and limitations:
+
+* The [installation](https://github.com/ameer1234567890/sphider-pdo/wiki/Installation) is slightly different, but most of the Sphider documentation on configuration and indexing options still applies (and that documentation is not repeated here).
+* The function addslashes, to sanitize user entry, has been replaced with a custom function. The reason is that addslashes adds backslashes in front of special characters, but SQLite does not support the backslash as an escape character. The custom function is database-specific and [you should implement this function](https://github.com/ameer1234567890/sphider-pdo/wiki/DatabaseSetup); it can be as simple as calling addslashes, or mysql_real_escape_string.
+* When changing the site URL in the "Admin" interface, [the links in the database are now also converted to the new URL](https://github.com/ameer1234567890/sphider-pdo/wiki/RelocateDatabase). This allows you to create a database on a local server and then translate the results to a public server. This is especially useful when using SQLite, because you would then just upload the new database (instead of re-running the spider on the public server).
+* The section for the database maintenance and backup in the "Admin" interface is available only for MySQL. The SQL queries are highly database-specific in this area. (PDO provides data-access abstraction, not database abstraction.)
+* Support for non-English languages has improved; accented characters are now supported. However, Sphider-PDO is still dependend on the Latin-1 encoding. There is limited support for [multilingual sites](https://github.com/ameer1234567890/sphider-pdo/wiki/MultilingualSupport).
+* The interface for ["Did you mean?" search terms](https://github.com/ameer1234567890/sphider-pdo/wiki/DidYouMean) has changed and been extended.
