@@ -401,7 +401,7 @@ function url_purify($url, $parent_url, $can_leave_domain) {
 
 
 
-    if (isset($urlparts['query'])) {
+    if (isset($urlparts['query']) && array_key_exists($urlparts['query'], $apache_indexes)) {
         if ($apache_indexes[$urlparts['query']]) {
             return '';
         }

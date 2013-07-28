@@ -42,11 +42,11 @@ if (isset($_GET['adv']))
 if (isset($_GET['lang']))
 	$language = $_GET['lang'];
 
-if (strcasecmp($query, $searchprompt) == 0)
+if (isset($query) && isset($searchprompt) && strcasecmp($query, $searchprompt) == 0)
 	$query = "";
 
 require_once("$language_dir/$language-language.php");
-require_once "$template_dir/$template/header_$language.html";
+require_once "$template_dir/$template/header.html";
 
 
 if (!isset($type) || ($type != "or" && $type != "and" && $type != "phrase")) {
