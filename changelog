@@ -4,6 +4,9 @@ CHANGELOG
 By Ando Saabas          ando(a t)cs.ioc.ee
 ============================================
 
+Sphider-PDO 1.3.8, release date 31 July 2013
+    Fixed bug where spidering stops at home page (Ameer Dawood)
+
 Sphider-PDO 1.3.7, release date 28 July 2013
     Various bug fixes for notices on PHP5 (Ameer Dawood)
 

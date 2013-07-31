@@ -172,14 +172,6 @@ error_reporting(E_ALL);
 			$url_status['state'] == "redirected";
 		}
 
-		if (!$index_vpaths && $url_status['state'] == 'ok') {
-			$url_parts = parse_url($url);
-			$base = basename($url_parts['path']);
-			if (strstr($base, '.') == false) {
-				$url_status['state'] = "directory listing or default redirect";
-			}
-		}
-
 		ini_set("user_agent", $user_agent);
 		if ($url_status['state'] == 'ok') {
 			$OKtoIndex = 1;
