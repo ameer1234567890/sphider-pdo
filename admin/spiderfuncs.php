@@ -128,7 +128,7 @@ function url_status($url) {
             while ($answer) {
                 $answer = fgets($fp, 4096);
 
-		if (preg_match("/Location: *([^\n\r ]+)/", $answer, $regs) && $httpcode == 3 && $full_httpcode != 302) {
+		if (preg_match("/Location: *([^\n\r ]+)/i", $answer, $regs) && $httpcode == 3 && $full_httpcode != 302) {
                     $status['path'] = $regs[1];
                     $status['state'] = "Relocation: http $full_httpcode";
                     fclose($fp);
@@ -216,7 +216,7 @@ function check_robot_txt($url) {
                     $omit[] = $disallow_str;
                 } else {
                     if ($this_agent == '*' || $this_agent == $user_agent) {
-                        return null;
+                        continue;
                     }
                 }
             }
