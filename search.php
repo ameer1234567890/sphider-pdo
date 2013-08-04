@@ -18,6 +18,11 @@ require_once("$settings_dir/database.php");
 require_once("$include_dir/searchfuncs.php");
 require_once("$include_dir/categoryfuncs.php");
 
+if (isset($start) && isset($query)){
+	if ($start <= 1) {$pagestart = "";} else {$pagestart = " [".$start."]";}
+	if ($query != "") { $pagetitle = $query." ".$pagestart; $pagekeywords = $query.", "; $pagedescription = $query." resources and ".$query." links, at ";} else { $pagetitle = " Sphider "; $pagekeywords = ""; $pagedescription = "";}
+}
+
 include "$settings_dir/conf.php";
 
 // http://www.sphider.eu/forum/read.php?2,9135 (modified for PDO)
