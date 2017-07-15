@@ -100,7 +100,7 @@ echo " ok\n";
 echo "<li>query_log";
 $db->exec("create table ".$table_prefix."query_log (
 	query VARCHAR(255),
-	time timestamp(14),
+	time timestamp,
 	elapsed FLOAT(2),
 	results INTEGER
 	)");
